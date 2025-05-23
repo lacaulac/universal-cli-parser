@@ -1,0 +1,14 @@
+name = "curl"
+has_separatorless_args_for_char_options = false
+string_separators = ["=", " "]
+handle_quotes = false
+
+[[string_options]]
+option_name = "data"
+has_arg = true
+
+[[char_options]]
+option_name = "k"
+
+[[char_options]]
+option_name = "v"

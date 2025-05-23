@@ -4,18 +4,10 @@ use parser_config::ParserConfig;
 use parser_structs::CLElement;
 
 fn main() {
-    let cmd_line = "-kv testurlhere --data thisistestdata";
+    let cmd_line = "-kv \"haaaa haaa\" --data thisistestdata";
 
-    let seps = vec!['='];
-    let char_options = vec![('k', false), ('v', false)];
-    let string_options = vec![("data".to_string(), true)];
-    let potential_concatenated_charopts_with_args = false;
-    let parser_config: ParserConfig = ParserConfig::new(
-        seps,
-        char_options,
-        string_options,
-        potential_concatenated_charopts_with_args,
-    );
+    let parser_config =
+        ParserConfig::from_toml_file("configs/curl.toml").expect("Failed to load config");
 
     let split_vec = get_split_vec(cmd_line, &parser_config);
 
@@ -55,8 +47,8 @@ fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> Vec<
                     if opt_idx >= option_names_vec.len() {
                         break;
                     }
-                    let option_name: char = option_names_vec.get(opt_idx).unwrap().clone();
-                    let does_opt_have_arg = parser_config.does_char_option_have_arg(&option_name);
+                    let option_name: &char = option_names_vec.get(opt_idx).unwrap();
+                    let does_opt_have_arg = parser_config.does_char_option_have_arg(option_name);
                     match does_opt_have_arg {
                         Ok(has_arg) => {
                             if has_arg {
@@ -211,8 +203,28 @@ fn get_argument_string(
     }
 
     //TODO Handle quotes
-    arg_string_buffer.push_str(split_vec.get(idx).unwrap().as_str());
-    idx += 1;
+    let obtained_string = split_vec.get(idx).unwrap();
+    if !obtained_string.starts_with("\"") || !parser_config.handle_quotes {
+        arg_string_buffer.push_str(obtained_string.as_str());
+        idx += 1;
+    } else {
+        arg_string_buffer.push_str(obtained_string.as_str().split_at(1).1); //Push the first part without its quote
+        idx += 1;
+        loop {
+            let next_string = split_vec.get(idx).unwrap();
+            let next_string = next_string.as_str();
+            if next_string.ends_with("\"") {
+                //This is the last one, copy it without its last char
+                let next_string = next_string.split_at(next_string.len() - 1).0;
+                arg_string_buffer.push_str(next_string);
+                idx += 1;
+                break;
+            } else {
+                arg_string_buffer.push_str((next_string));
+                idx += 1;
+            }
+        }
+    }
 
     Ok((arg_string_buffer, idx))
 }
