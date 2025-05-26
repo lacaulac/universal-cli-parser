@@ -24,6 +24,7 @@ struct CharOption {
 }
 
 pub struct ParserConfig {
+    pub name: String,
     pub string_separators: Vec<char>,
     pub char_options: Vec<(char, bool)>,
     pub string_options: Vec<(String, bool)>,
@@ -33,6 +34,7 @@ pub struct ParserConfig {
 
 impl ParserConfig {
     pub fn new(
+        name: String,
         string_separators: Vec<char>,
         char_options: Vec<(char, bool)>,
         string_options: Vec<(String, bool)>,
@@ -40,6 +42,7 @@ impl ParserConfig {
         handle_quotes: bool,
     ) -> ParserConfig {
         ParserConfig {
+            name,
             string_separators,
             char_options,
             string_options,
@@ -82,6 +85,8 @@ impl ParserConfig {
         let contents = fs::read_to_string(file_path).map_err(|e| e.to_string())?;
         let config_file: ConfigFile = toml::from_str(&contents).map_err(|e| e.to_string())?;
 
+        let name = config_file.name;
+
         let string_separators: Vec<char> = config_file
             .string_separators
             .iter()
@@ -101,6 +106,7 @@ impl ParserConfig {
             .collect();
 
         Ok(ParserConfig {
+            name,
             string_separators,
             char_options,
             string_options,
