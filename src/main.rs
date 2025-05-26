@@ -220,7 +220,7 @@ pub fn get_argument_string(
                 idx += 1;
                 break;
             } else {
-                arg_string_buffer.push_str((next_string));
+                arg_string_buffer.push_str(next_string);
                 idx += 1;
             }
         }
