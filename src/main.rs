@@ -18,7 +18,7 @@ fn main() {
     }
 }
 
-fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> Vec<CLElement> {
+pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> Vec<CLElement> {
     let mut idx = 0; //Index into the split
     let mut parsed_cmdline: Vec<CLElement> = vec![];
     loop {
@@ -37,8 +37,8 @@ fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> Vec<
         //Is it an option?
         if first_char_is_dash {
             if !two_first_char_are_dashes {
-                //It's a char option
-                //Let's get the
+                //It's a char option block
+                //Let's get the individual chars
                 let mut option_names_vec = Vec::new();
                 option_names_vec.extend(pointed_str.clone().split_off(1).chars());
                 let mut opt_idx: usize = 0;
@@ -161,7 +161,7 @@ fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> Vec<
     parsed_cmdline
 }
 
-fn get_split_vec(cmd_line: &str, parser_config: &ParserConfig) -> Vec<String> {
+pub fn get_split_vec(cmd_line: &str, parser_config: &ParserConfig) -> Vec<String> {
     let mut split_vec: Vec<String> = vec![];
 
     let mut current_str_buffer: String = String::new();
@@ -187,7 +187,7 @@ fn get_split_vec(cmd_line: &str, parser_config: &ParserConfig) -> Vec<String> {
     split_vec
 }
 
-fn get_argument_string(
+pub fn get_argument_string(
     parser_config: &ParserConfig,
     split_vec: &Vec<String>,
     idx: usize,
