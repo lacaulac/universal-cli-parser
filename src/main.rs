@@ -3,11 +3,13 @@ mod parser_structs;
 use parser_config::ParserConfig;
 use parser_structs::CLElement;
 
+use crate::parser_structs::CLArgument;
+
 fn main() {
-    let cmd_line = "-kv \"haaaa haaa\" --data thisistestdata";
+    let cmd_line = "-xvf remotehost:test.tar.gz --rsh-command=/bin/ssh";
 
     let parser_config =
-        ParserConfig::from_toml_file("configs/curl.toml").expect("Failed to load config");
+        ParserConfig::from_toml_file("configs/tar.toml").expect("Failed to load config");
 
     let split_vec = get_split_vec(cmd_line, &parser_config);
 
@@ -69,9 +71,11 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
                                     match arg_str_res {
                                         Ok((argument_string, new_idx)) => {
                                             idx_replacement = Some(new_idx);
+                                            let mut argument = CLArgument::String(argument_string);
+                                            argument.identify_type();
                                             parsed_cmdline.push(CLElement::CLOption((
                                                 option_name.to_string(),
-                                                Some(argument_string),
+                                                Some(argument),
                                             )));
                                         }
                                         Err(err_msg) => {
@@ -118,10 +122,10 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
                             match arg_str_res {
                                 Ok((argument_string, new_idx)) => {
                                     idx = new_idx;
-                                    parsed_cmdline.push(CLElement::CLOption((
-                                        option_name,
-                                        Some(argument_string),
-                                    )));
+                                    let mut argument = CLArgument::String(argument_string);
+                                    argument.identify_type();
+                                    parsed_cmdline
+                                        .push(CLElement::CLOption((option_name, Some(argument))));
                                 }
                                 Err(err_msg) => {
                                     parsed_cmdline.push(CLElement::ParsingError(Some(err_msg)));
@@ -151,7 +155,9 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
             //It's a free-standing argument, let's retrieve it
             match get_argument_string(&parser_config, &split_vec, idx) {
                 Ok((arg_str, new_idx)) => {
-                    parsed_cmdline.push(CLElement::CLArgument(arg_str));
+                    let mut argument = CLArgument::String(arg_str);
+                    argument.identify_type();
+                    parsed_cmdline.push(CLElement::CLArgument(argument));
                     idx = new_idx;
                 }
                 Err(err_str) => parsed_cmdline.push(CLElement::ParsingError(Some(err_str))),

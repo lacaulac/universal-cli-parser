@@ -4,11 +4,909 @@ string_separators = ["=", " "]
 handle_quotes = false
 
 [[string_options]]
+option_name = "abstract-unix-socket"
+has_arg = true
+behaviours = ["NET_COMS", "FILE_READ"]
+
+[[string_options]]
+option_name = "alt-svc"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "anyauth"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "a"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "aws-sigv4"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "basic"
+behaviours = ["NEUTRAL"]
+[[string_options]]
+option_name = "cacert"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "capath"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "cert-status"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "cert-type"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "E"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "cert"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "ciphers"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "compressed-ssh"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "compressed"
+behaviours = ["ARG_FILE"]
+[[string_options]]
+option_name = "config"
+has_arg = true
+behaviours = ["FS_OP"]
+
+[[string_options]]
+option_name = "connect-timeout"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "connect-to"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "C"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "continue-at"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "c"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "cookie-jar"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "b"
+has_arg = true
+behaviours = ["NET_COMS", "FILE_READ"]
+
+[[string_options]]
+option_name = "cookie"
+has_arg = true
+behaviours = ["NET_COMS", "FILE_READ"]
+
+[[string_options]]
+option_name = "create-dirs"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "create-file-mode"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "crlf"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "crlfile"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "curves"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "data-ascii"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "data-binary"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "data-raw"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "data-urlencode"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "d"
+has_arg = true
+behaviours = ["NET_COMS", "FILE_READ"]
+
+[[string_options]]
 option_name = "data"
 has_arg = true
+behaviours = ["NET_COMS", "FILE_READ"]
+
+[[string_options]]
+option_name = "delegation"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "digest"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "disable-eprt"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "disable-epsv"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "q"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "disable"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "disallow-username-in-url"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "fail-early"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "fail-with-body"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "f"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "fail"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "false-start"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "form-escape"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "form-string"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "F"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "form"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "ftp-account"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "ftp-alternative-to-user"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "ftp-create-dirs"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "ftp-method"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ftp-pasv"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "P"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ftp-port"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ftp-pret"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ftp-skip-pasv-ip"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "ftp-ssl-ccc-mode"
+has_arg = true
+behaviours = ["ARG_FILE"]
+[[string_options]]
+option_name = "ftp-ssl-ccc"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ftp-ssl-control"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "G"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "get"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "g"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "globoff"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "happy-eyeballs-timeout-ms"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "haproxy-protocol"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "I"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "head"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "H"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "header"
+has_arg = true
+behaviours = ["NET_COMS"]
+[[char_options]]
+option_name = "H"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "header"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[char_options]]
+option_name = "h"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "help"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "hostpubmd5"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "hostpubsha256"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "hsts"
+has_arg = true
+behaviours = ["FILE_WRITE", "FILE_READ"]
+
+[[string_options]]
+option_name = "http0.9"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "0"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "http1.0"
+behaviours = ["ARG_FILE"]
+[[string_options]]
+option_name = "http1.1"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "http2-prior-knowledge"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "http2"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "http3"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ignore-content-length"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "i"
+behaviours = ["COPY"]
+
+[[string_options]]
+option_name = "include"
+behaviours = ["COPY"]
 
 [[char_options]]
 option_name = "k"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "insecure"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "interface"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "4"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ipv4"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "6"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ipv6"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "j"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "junk-session-cookies"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "keepalive-time"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "key-type"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "key"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "krb"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "libcurl"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "limit-rate"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "l"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "list-only"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "local-port"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "location-trusted"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "L"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "location"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "login-options"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "mail-auth"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "mail-from"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "mail-rcpt"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "M"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "manual"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "max-filesize"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "max-redirs"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "m"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "max-time"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "metalink"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "negotiate"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "netrc-file"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "netrc-optional"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "n"
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "netrc"
+behaviours = ["FILE_READ"]
+
+[[char_options]]
+option_name = "-"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "next"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-alpn"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "N"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-buffer"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-keepalive"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "no-npn"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "no-progress-meter"
+behaviours = ["NEUTRAL"]
+[[string_options]]
+option_name = "no-sessionid"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "noproxy"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "ntlm-wb"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "ntlm"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "oauth2-bearer"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "o"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "output"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "parallel-immediate"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "parallel-max"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "Z"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "parallel"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "pass"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "path-as-is"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "pinnedpubkey"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "post301"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "post302"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "post303"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "preproxy"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "#"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "progress-bar"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "proto-default"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "proto-redir"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "proto"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "proxy-anyauth"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "proxy-basic"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "proxy-digest"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "proxy-header"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "proxy-header"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "proxy-negotiate"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "proxy-ntlm"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "proxy-pinnedpubkey"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "proxy-service-name"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "proxy-tls13-ciphers"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "U"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "proxy-user"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "x"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "proxy"
+has_arg = true
+behaviours = ["ARG_FILE"]
+[[string_options]]
+option_name = "proxy1.0"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "pubkey"
+has_arg = true
+behaviours = ["FILE_READ", "NET_COMS"]
+
+[[string_options]]
+option_name = "random-file"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "range"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "referer"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "p"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "r"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "e"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "raw"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "J"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "remote-header-name"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "remote-name-all"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "O"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "remote-name"
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "R"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "remote-time"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "request-target"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "X"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "request"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "resolve"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "retry-connrefused"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "retry-delay"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "retry-max-time"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "retry"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "sasl-ir"
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "service-name"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "S"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "s"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "show-error"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "silent"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "socks4"
+has_arg = true
+behaviours = ["ARG_FILE"]
+[[string_options]]
+option_name = "url"
+has_arg = true
+behaviours = ["NET_COMS"]
 
 [[char_options]]
 option_name = "v"
+behaviours = ["NEUTRAL"]

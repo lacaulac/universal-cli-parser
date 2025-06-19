@@ -1,0 +1,308 @@
+name = "tar"
+has_separatorless_args_for_char_options = false
+string_separators = ["=", " "]
+handle_quotes = false
+
+[[char_options]]
+option_name = "v"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "f"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "file"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[char_options]]
+option_name = "A"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "catenate"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "concatenate"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[char_options]]
+option_name = "c"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "create"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[char_options]]
+option_name = "d"
+has_arg = true
+behaviours = ["NET_INFO", "FILE_READ"]
+
+[[string_options]]
+option_name = "diff"
+has_arg = true
+behaviours = ["NET_INFO", "FILE_READ"]
+
+[[string_options]]
+option_name = "compare"
+has_arg = true
+behaviours = ["NET_INFO", "FILE_READ"]
+
+[[string_options]]
+option_name = "delete"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "r"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "append"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[char_options]]
+option_name = "r"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "append"
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "t"
+behaviours = ["COPY"]
+
+[[string_options]]
+option_name = "list"
+behaviours = ["COPY"]
+
+[[string_options]]
+option_name = "test-label"
+behaviours = ["COPY"]
+
+[[char_options]]
+option_name = "u"
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "update"
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[char_options]]
+option_name = "x"
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "extract"
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "get"
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "show-defaults"
+behaviours = ["NEUTRAL"]
+
+
+[[char_options]]
+option_name = "?"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "help"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "usage"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "version"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "check-device"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "g"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "listed-incremental"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "hole-detection"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "G"
+behaviours = ["NEUTRAL"]
+
+
+[[string_options]]
+option_name = "ignore-failed-read"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "level"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "n"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "seek"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-check-device"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-seek"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "occurrence"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "restrict"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "sparse-version"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "S"
+behaviours = ["NEUTRAL"]
+[[string_options]]
+option_name = "sparse"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "k"
+behaviours = ["FS_INFO"]
+[[string_options]]
+option_name = "keep-old-files"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "keep-newer-files"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "keep-directory-symlink"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "no-overwrite-dir"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "one-top-level"
+has_arg = true
+behaviours = ["FS_INFO", "FILE_WRITE"]
+
+[[string_options]]
+option_name = "overwrite"
+behaviours = ["FILE_WRITE"]
+[[string_options]]
+option_name = "overwrite-dir"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "recursive-unlink"
+behaviours = ["NET_INFO", "FS_INFO"]
+
+[[string_options]]
+option_name = "remove-files"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "skip-old-files"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "U"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "unlink-first"
+behaviours = ["FS_INFO"]
+
+[[char_options]]
+option_name = "W"
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "verify"
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "ignore-command-error"
+behaviours = ["NEUTRAL"]
+[[string_options]]
+option_name = "no-ignore-command-error"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "O"
+behaviours = ["COPY"]
+
+[[string_options]]
+option_name = "to-stdout"
+behaviours = ["COPY"]
+
+[[string_options]]
+option_name = "to-command"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[char_options]]
+option_name = "F"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[string_options]]
+option_name = "info-script"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[string_options]]
+option_name = "new-volume-script"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[string_options]]
+option_name = "rmt-command"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[string_options]]
+option_name = "rsh-command"
+has_arg = true
+behaviours = ["CMD_EXEC"]
