@@ -19,27 +19,27 @@ behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[char_options]]
 option_name = "A"
-has_arg = true
+has_arg = false
 behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[string_options]]
 option_name = "catenate"
-has_arg = true
+has_arg = false
 behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[string_options]]
 option_name = "concatenate"
-has_arg = true
+has_arg = false
 behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[char_options]]
 option_name = "c"
-has_arg = true
+has_arg = false
 behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[string_options]]
 option_name = "create"
-has_arg = true
+has_arg = false
 behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[char_options]]
