@@ -2,17 +2,19 @@ use std::default;
 
 use once_cell::sync::Lazy;
 use regex::Regex;
+use serde::Serialize;
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Clone)]
 pub enum CLElement {
     CLOption((String, Option<CLArgument>)), //Denotes command-line option with an optional argument
+    CLBehaviouredOption((String, Vec<String>, Option<CLArgument>)), //Denotes command-line option with a list of behaviours and an optional argument
     CLArgument(CLArgument), //Denotes a free-standing argument, such as a URI for curl
     CLSep(char),            //Denotes a separator
     ParsingError(Option<String>), //Used to express errors in the parsing process,
     CLDoubleDash, //Used to designate free-standing a double-dash sequence, usually used to indicate that input should be read from stdin
 }
 
-#[derive(Debug)]
+#[derive(Debug, Serialize, Clone)]
 pub enum CLArgument {
     String(String),
     U16(u16),

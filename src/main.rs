@@ -1,5 +1,7 @@
 mod parser_config;
 mod parser_structs;
+use std::ops::Deref;
+
 use parser_config::ParserConfig;
 use parser_structs::CLElement;
 
@@ -21,10 +23,11 @@ async fn main() {
     let app = Router::new()
         // `GET /` goes to `root`
         .route("/", get(root))
-        .route("/parse", post(parse_request));
+        .route("/parse", post(parse_request))
+        .route("/behaviours", post(behaviours_request));
 
-    // run our app with hyper, listening globally on port 3000
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    // run our app with hyper, listening globally on port 6880
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:6880").await.unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
@@ -44,6 +47,43 @@ async fn parse_request(Json(payload): Json<ParseRequest>) -> Result<String, Stat
     let parsed_cmdline = parse_the_split(args, &parser_config);
 
     Ok(format!("{:?}", parsed_cmdline))
+}
+
+async fn behaviours_request(
+    Json(payload): Json<ParseRequest>,
+) -> Result<Json<Vec<CLElement>>, StatusCode> {
+    let program = payload.program;
+    let args = payload.args;
+
+    // Perform parsing logic here
+    let parser_config = ParserConfig::from_toml_file(format!("configs/{}.toml", program).as_str())
+        .expect("Failed to load config");
+
+    let parsed_cmdline = parse_the_split(args, &parser_config);
+    let mut enriched_parsed_cmdline: Vec<CLElement> = Vec::new();
+
+    for elem in &parsed_cmdline {
+        let new_element: CLElement;
+        //If elem is not a CLOption, just copy it into the new vector
+        if let CLElement::CLOption(opt) = elem {
+            //Let's get the behaviour of the option
+            let behaviours = match parser_config.get_behaviours(&opt.0) {
+                Ok(behaviours) => behaviours,
+                Err(err) => {
+                    let err_msg = format!("Error getting behaviour for option {}: {}", opt.0, err);
+                    eprintln!("{}", err_msg);
+                    return Err(StatusCode::IM_A_TEAPOT);
+                }
+            };
+            new_element =
+                CLElement::CLBehaviouredOption((opt.0.clone(), behaviours, opt.1.clone()));
+        } else {
+            new_element = elem.clone();
+        }
+        enriched_parsed_cmdline.push(new_element);
+    }
+
+    Ok(Json(enriched_parsed_cmdline))
 }
 
 // the input to our `create_user` handler
