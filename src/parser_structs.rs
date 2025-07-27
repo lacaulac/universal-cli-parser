@@ -28,7 +28,7 @@ impl CLArgument {
     pub fn identify_type(&mut self) {
         static REMOTE_PATH_REGEX: Lazy<Regex> = Lazy::new(|| {
             Regex::new(
-                r"(([a-zA-Z]+[a-zA-Z0-9]*)@)?(([a-zA-Z0-9]+)(\\.([a-zA-Z0-9]+))*):([a-zA-Z]|\\/)+",
+                r"(([a-zA-Z]+[a-zA-Z0-9]*)@)?(([a-zA-Z0-9]+)(\\.([a-zA-Z0-9]+))*):(\/?)([a-zA-Z]|\\/)+",
             )
             .unwrap()
         });
