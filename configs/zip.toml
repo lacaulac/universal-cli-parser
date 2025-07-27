@@ -1,0 +1,667 @@
+name = "zip"
+has_separatorless_args_for_char_options = false
+string_separators = ["=", " "]
+handle_quotes = false
+
+[[string_options]]
+option_name = "zip"
+behaviours = ["FILE_WRITE", "FILE_READ"]
+
+[[char_options]]
+option_name = "A"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "adjust-sfx"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "archive-clear"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "AC"
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "archive-set"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "AS"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "B"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "Bn"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "b"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "temp-path"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+[[char_options]]
+option_name = "c"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "entry-comments"
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "C"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "preserve-case"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "C2"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "preserve-case-2"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "C5"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "preserve-case-5"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "d"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "delete"
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "dc"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "display-counts"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "dd"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "display-dots"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "df"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "datafork"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "dg"
+option_alias = "display-globaldots"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "ds"
+option_alias = "dot-size"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "du"
+option_alias = "display-usize"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "dv"
+option_alias = "display-volume"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "D"
+option_alias = "no-dir-entries"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "DF"
+option_alias = "difference-archive"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "e"
+option_alias = "encrypt"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "E"
+option_alias = "longnames"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "f"
+option_alias = "freshen"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "F"
+option_alias = "fix"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "F"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "F"
+behaviours = ["FILE_READ"]
+
+[[char_options]]
+option_name = "S"
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "filesync"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "g"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "grow"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "h"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "?"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "help"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "h2"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "more-help"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "i"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "include"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "I"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-image"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "ic"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "ignore-case"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "j"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "junk-paths"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "jj"
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "absolute-path"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "J"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "junk-sfx"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "k"
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "DOS-names"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "l"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "to-crlf"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "la"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "log-append"
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "lf"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "logfile-path"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+[[char_options]]
+option_name = "li"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "log-info"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "ll"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "from-crlf"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "L"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "license"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "m"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "move"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "must-match"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "n"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "suffixes"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "nw"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-wild"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "N"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "notes"
+behaviours = ["NET_INFO"]
+[[char_options]]
+option_name = "o"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "latest-time"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "output-file"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "p"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "paths"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "P"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "password"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "q"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "quiet"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "Q-flag"
+has_arg = true
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "r"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "recurse-paths"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "recurse-patterns"
+behaviours = ["NET_INFO"]
+[[char_options]]
+option_name = "RE"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "regex"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "s"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "sb"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "split-bell"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "sc"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "show-command"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "sf"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "show-files"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "so"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "show-options"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "sp"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "split-pause"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "su"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "show-unicode"
+behaviours = ["NEUTRAL"]
+toml
+[[char_options]]
+option_name = "s"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "show-just-unicode"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "s"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "split-verbose"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "S"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "system-hidden"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "t"
+has_arg = true
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "from-date"
+has_arg = true
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "t"
+has_arg = true
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "before-date"
+has_arg = true
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "T"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "test"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "T"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[string_options]]
+option_name = "unzip-command"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[char_options]]
+option_name = "u"
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "update"
+behaviours = ["SYS_INFO"]
+
+[[char_options]]
+option_name = "U"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "copy-entries"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "unicode"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "v"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "verbose"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "V"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "VMS-portable"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "VV"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "VMS-specific"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "w"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "VMS-versions"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "ww"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "VMS-dot-versions"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "wild-stop-dirs"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "x"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "exclude"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "X"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-extra"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "y"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "symlinks"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "z"
+behaviours = ["FS_WRITE"]
+
+[[string_options]]
+option_name = "archive-comment"
+behaviours = ["FS_WRITE"]
+
+[[string_options]]
+option_name = "compression-method"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "Z"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "#"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "!"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "use-privileges"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "@"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "names-stdin"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "$"
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "volume-label"
+behaviours = ["SYS_INFO"]
+

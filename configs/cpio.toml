@@ -1,0 +1,321 @@
+name = "cpio"
+has_separatorless_args_for_char_options = false
+string_separators = [" "]
+handle_quotes = false
+
+[[char_options]]
+option_name = "o"
+behaviours = ["COPY"]
+
+[[string_options]]
+option_name = "create"
+behaviours = ["COPY"]
+
+[[char_options]]
+option_name = "i"
+behaviours = ["FILE_WRITE", "COPY"]
+
+[[string_options]]
+option_name = "extract"
+behaviours = ["FILE_WRITE", "COPY"]
+
+[[char_options]]
+option_name = "p"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "pass-through"
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "?"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "help"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "usage"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "version"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+toml
+[[char_options]]option_name = "block-size"
+has_arg = true
+behaviours = ["NEUTRAL"]
+option_name = "B"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "c"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "C"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "io-size"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "D"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "directory"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "force-local"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "H"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "format"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "R"
+has_arg = true
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "owner"
+has_arg = true
+behaviours = ["SYS_INFO"]
+
+[[string_options]]
+option_name = "quiet"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "rsh-command"
+has_arg = true
+behaviours = ["CMD_EXEC"]
+
+[[char_options]]
+option_name = "v"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "verbose"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "V"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "dot"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "W"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "warning"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "F"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE", "NET_COMS"]
+
+[[string_options]]
+option_name = "file"
+has_arg = true
+behaviours = ["FILE_READ", "FILE_WRITE", "NET_COMS"]
+
+[[char_options]]
+option_name = "M"
+has_arg = true
+behaviours = ["COPY"]
+
+[[string_options]]
+option_name = "message"
+has_arg = true
+behaviours = ["COPY"]
+[[char_options]]
+option_name = "b"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "swap"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "f"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "nonmatching"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "n"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "numeric-uid-gid"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "r"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "rename"
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "s"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "swap-bytes"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "S"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "swap-halfwords"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "to-stdout"
+behaviours = ["COPY"]
+
+[[char_options]]
+option_name = "E"
+has_arg = true
+behaviours = ["FILE_READ"]
+
+[[string_options]]
+option_name = "pattern-file"
+has_arg = true
+behaviours = ["FILE_READ"]
+[[string_options]]
+option_name = "only-verify-crc"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "A"
+behaviours = ["FILE_WRITE"]
+[[string_options]]
+option_name = "append"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "device-independent"
+behaviours = ["NEUTRAL"]
+[[string_options]]
+option_name = "reproducible"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "ignore-devno"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "O"
+has_arg = true
+behaviours = ["FILE_WRITE", "NET_COMS"]
+
+[[string_options]]
+option_name = "renumber-inodes"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "l"
+behaviours = ["FILE_WRITE"]
+[[string_options]]
+toml
+[[string_options]]option_name = "link"
+behaviours = ["FILE_WRITE"]
+option_name = "absolute-filenames"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-absolute-filenames"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "0"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "null"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "a"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "reset-access-time"
+behaviours = ["FS_INFO"]
+
+[[char_options]]
+option_name = "I"
+has_arg = true
+behaviours = ["FILE_READ", "NET_COMS"]
+
+[[string_options]]
+option_name = "dereference"
+behaviours = ["FILE_READ"]
+
+[[char_options]]
+option_name = "L"
+behaviours = ["FILE_READ"]
+
+[[char_options]]
+option_name = "d"
+behaviours = ["FS_OP"]
+
+[[string_options]]
+option_name = "make-directories"
+behaviours = ["FS_OP"]
+
+[[char_options]]
+option_name = "m"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "preserve-modification-time"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "no-preserve-owner"
+behaviours = ["FS_INFO"]
+
+[[string_options]]
+option_name = "sparse"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "u"
+behaviours = ["FILE_WRITE"]
+
+[[string_options]]
+option_name = "unconditional"
+behaviours = ["FILE_WRITE"]

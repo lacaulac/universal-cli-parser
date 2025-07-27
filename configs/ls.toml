@@ -1,0 +1,343 @@
+name = "ls"
+has_separatorless_args_for_char_options = false
+string_separators = ["=", " "]
+handle_quotes = false
+
+[[string_options]]
+option_name = "all"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "a"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "A"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "almost-all"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "author"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "b"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "escape"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "block-size"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "B"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "ignore-backups"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "c"
+behaviours = ["NET_INFO"]
+[[char_options]]
+option_name = "C"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "color"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "d"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "directory"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "D"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "dired"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "f"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "F"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "classify"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "file-type"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "format"
+behaviours = ["NEUTRAL"]
+[[string_options]]
+option_name = "full-time"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "g"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "group-directories-first"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "G"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "no-group"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "h"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "human-readable"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "si"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "H"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "dereference-command-line"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "dereference-command-line-symlink-to-dir"
+behaviours = ["NET_INFO"]
+[[string_options]]
+option_name = "hide"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "hyperlink"
+has_arg = false
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "indicator-style"
+has_arg = true
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "i"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "inode"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "ignore"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "k"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "kibibytes"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "l"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "L"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "dereference"
+behaviours = ["NET_INFO"]
+[[char_options]]
+option_name = "m"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "n"
+behaviours = ["NET_CFG", "NET_INFO"]
+
+[[string_options]]
+option_name = "numeric-uid-gid"
+behaviours = ["NET_CFG", "NET_INFO"]
+
+[[char_options]]
+option_name = "N"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "o"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "p"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "indicator-style"
+has_arg = true
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "q"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "hide-control-chars"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "show-control-chars"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "Q"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "quote-name"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "quoting-style"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "r"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "reverse"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "R"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "recursive"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "s"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "size"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "S"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "sort"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "time"
+has_arg = true
+behaviours = ["NET_INFO"]
+[[string_options]]
+option_name = "time-style"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "t"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "T"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "tabsize"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "u"
+behaviours = ["NET_INFO"]
+
+[[char_options]]
+option_name = "U"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "v"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "w"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "width"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "x"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "X"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "Z"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "context"
+behaviours = ["NET_INFO"]
+
+[[string_options]]
+option_name = "zero"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "1"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "help"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "version"
+behaviours = ["NEUTRAL"]

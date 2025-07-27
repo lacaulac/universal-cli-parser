@@ -1,0 +1,165 @@
+name = "ab"
+has_separatorless_args_for_char_options = false
+string_separators = [" "]
+handle_quotes = false
+
+[[char_options]]
+option_name = "A"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "b"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "B"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "c"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "C"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "d"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "e"
+has_arg = true
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "E"
+has_arg = true
+behaviours = ["FILE_READ", "NET_COMS", "ARG_FILE"]
+
+[[string_options]]
+option_name = "client-certificate-file"
+has_arg = true
+behaviours = ["FILE_READ", "NET_COMS", "ARG_FILE"]
+
+[[string_options]]
+option_name = "f"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "g"
+has_arg = true
+behaviours = ["FILE_WRITE"]
+
+[[char_options]]
+option_name = "h"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "H"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "i"
+behaviours = ["ARG_FILE"]
+
+[[char_options]]
+option_name = "k"
+behaviours = ["ARG_FILE"]
+[[char_options]]
+option_name = "l"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "m"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "n"
+has_arg = true
+behaviours = ["ARG_FILE"]
+
+[[string_options]]
+option_name = "p"
+has_arg = true
+behaviours = ["FILE_READ", "NET_COMS"]
+
+[[char_options]]
+option_name = "P"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "q"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "r"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "s"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "S"
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "t"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[char_options]]
+option_name = "T"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[char_options]]
+option_name = "u"
+has_arg = true
+behaviours = ["FILE_READ", "NET_COMS"]
+
+[[char_options]]
+option_name = "v"
+has_arg = true
+behaviours = ["COPY"]
+
+[[char_options]]
+option_name = "V"
+behaviours = ["NEUTRAL"]
+[[char_options]]
+option_name = "w"
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "x"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "X"
+has_arg = true
+behaviours = ["NET_COMS"]
+
+[[string_options]]
+option_name = "y"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "z"
+has_arg = true
+behaviours = ["NEUTRAL"]
+
+[[string_options]]
+option_name = "Z"
+has_arg = true
+behaviours = ["ARG_FILE"]
