@@ -171,7 +171,7 @@ behaviours = ["NEUTRAL"]
 
 [[char_options]]
 option_name = "l"
-behaviours = ["NET_INFO"]
+behaviours = ["FS_INFO"]
 
 [[char_options]]
 option_name = "L"
