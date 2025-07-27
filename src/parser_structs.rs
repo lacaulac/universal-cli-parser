@@ -35,7 +35,7 @@ impl CLArgument {
             .unwrap()
         });
         static LOCAL_PATH_REGEX: Lazy<Regex> = Lazy::new(|| {
-            Regex::new(r"^((\.|\.\.)?\/)?([a-zA-Z]+[a-zA-Z0-9]*)(\/([a-zA-Z]+[a-zA-Z0-9]*))*$")
+            Regex::new(r"((\.|\.\.)?\/)?([a-zA-Z]+[a-zA-Z0-9]*)(\/([a-zA-Z]+[a-zA-Z0-9]*))*")
                 .unwrap()
         });
         match self {
@@ -53,8 +53,8 @@ impl CLArgument {
                     *self = CLArgument::Boolean(bool);
                 } else if REMOTE_PATH_REGEX.is_match(str_val) {
                     *self = CLArgument::RemotePath(str_val.clone());
-                } else if LOCAL_PATH_REGEX.is_match(str_val) {
-                    *self = CLArgument::LocalPath(str_val.clone());
+                    //} else if LOCAL_PATH_REGEX.is_match(str_val) {
+                    //    *self = CLArgument::LocalPath(str_val.clone());
                 } else {
                     *self = CLArgument::String(str_val.clone());
                 }
