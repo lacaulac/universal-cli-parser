@@ -42,7 +42,7 @@ async fn parse_request(Json(payload): Json<ParseRequest>) -> Result<String, Stat
 
     // Perform parsing logic here
     let parser_config = ParserConfig::from_toml_file(format!("configs/{}.toml", program).as_str())
-        .expect("Failed to load config");
+        .expect(format!("Failed to load config for program {}", program).as_str());
 
     let parsed_cmdline = parse_the_split(args, &parser_config);
 
@@ -57,7 +57,7 @@ async fn behaviours_request(
 
     // Perform parsing logic here
     let parser_config = ParserConfig::from_toml_file(format!("configs/{}.toml", program).as_str())
-        .expect("Failed to load config");
+        .expect(format!("Failed to load config for program {}", program).as_str());
 
     let parsed_cmdline = parse_the_split(args, &parser_config);
     let mut enriched_parsed_cmdline: Vec<CLElement> = Vec::new();
@@ -82,6 +82,8 @@ async fn behaviours_request(
         }
         enriched_parsed_cmdline.push(new_element);
     }
+
+    println!("Dealt with a behaviour parsing request");
 
     Ok(Json(enriched_parsed_cmdline))
 }
@@ -112,7 +114,7 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
     let mut idx = 0; //Index into the split
     let mut parsed_cmdline: Vec<CLElement> = vec![];
     loop {
-        println!("Current index is {}/{}", idx, split_vec.len());
+        //println!("Current index is {}/{}", idx, split_vec.len());
         if idx >= split_vec.len() {
             break;
         }

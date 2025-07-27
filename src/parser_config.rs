@@ -63,10 +63,10 @@ impl ParserConfig {
     pub fn does_char_option_have_arg(&self, option_name: &char) -> Result<bool, String> {
         for str_opt in &self.char_options {
             if str_opt.0.eq(option_name) {
-                println!(
-                    "\tFound char option {}, argument : {}",
-                    str_opt.0, str_opt.1
-                );
+                //println!(
+                //    "\tFound char option {}, argument : {}",
+                //    str_opt.0, str_opt.1
+                //);
                 return Ok(str_opt.1);
             }
         }
@@ -76,10 +76,10 @@ impl ParserConfig {
     pub fn does_string_option_have_arg(&self, option_name: &String) -> Result<bool, String> {
         for str_opt in &self.string_options {
             if str_opt.0.eq(option_name) {
-                println!(
-                    "\tFound string option {}, argument : {}",
-                    str_opt.0, str_opt.1
-                );
+                //println!(
+                //    "\tFound string option {}, argument : {}",
+                //    str_opt.0, str_opt.1
+                //);
                 return Ok(str_opt.1);
             }
         }
@@ -93,10 +93,10 @@ impl ParserConfig {
         //Look in the config_file member
         for char_opt in &self.config_file.char_options {
             if char_opt.option_name.eq(option_name) {
-                println!(
-                    "\tFound char option {}, behaviours : {:?}",
-                    char_opt.option_name, char_opt.behaviours
-                );
+                //println!(
+                //    "\tFound char option {}, behaviours : {:?}",
+                //    char_opt.option_name, char_opt.behaviours
+                //);
                 return Ok(char_opt.behaviours.clone());
             }
         }
@@ -110,10 +110,10 @@ impl ParserConfig {
         //Look in the config_file member
         for str_opt in &self.config_file.string_options {
             if str_opt.option_name.eq(option_name) {
-                println!(
-                    "\tFound string option {}, behaviours : {:?}",
-                    str_opt.option_name, str_opt.behaviours
-                );
+                //println!(
+                //    "\tFound string option {}, behaviours : {:?}",
+                //    str_opt.option_name, str_opt.behaviours
+                //);
                 return Ok(str_opt.behaviours.clone());
             }
         }
