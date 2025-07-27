@@ -155,7 +155,7 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
                                 } else {
                                     //Get the argument that comes after it like we would for a string option
                                     let arg_str_res =
-                                        get_argument_string(&parser_config, &split_vec, idx + 2);
+                                        get_argument_string(&parser_config, &split_vec, idx + 1);
                                     match arg_str_res {
                                         Ok((argument_string, new_idx)) => {
                                             idx_replacement = Some(new_idx);
@@ -205,7 +205,7 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
                 match does_opt_have_arg {
                     Ok(has_argument) => {
                         if has_argument {
-                            idx += 2; //Skip the separator
+                            idx += 1; //Skip the separator
                             let arg_str_res = get_argument_string(&parser_config, &split_vec, idx);
                             match arg_str_res {
                                 Ok((argument_string, new_idx)) => {
@@ -289,11 +289,13 @@ pub fn get_argument_string(
     let mut arg_string_buffer: String = String::new();
     let mut idx = idx;
     if idx >= split_vec.len() {
-        return Err(format!(
+        let err = format!(
             "get_argument_string attempted to index element {} of a split_vec of size {}",
             idx,
             split_vec.len()
-        ));
+        );
+        eprintln!("{}", err);
+        return Err(err);
     }
 
     //TODO Handle quotes
