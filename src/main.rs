@@ -5,7 +5,55 @@ use parser_structs::CLElement;
 
 use crate::parser_structs::CLArgument;
 
-fn main() {
+use axum::{
+    Json, Router,
+    http::StatusCode,
+    routing::{get, post},
+};
+use serde::{Deserialize, Serialize};
+
+#[tokio::main]
+async fn main() {
+    // initialize tracing
+    //tracing_subscriber::fmt::init();
+
+    // build our application with a route
+    let app = Router::new()
+        // `GET /` goes to `root`
+        .route("/", get(root))
+        .route("/parse", post(parse_request));
+
+    // run our app with hyper, listening globally on port 3000
+    let listener = tokio::net::TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    axum::serve(listener, app).await.unwrap();
+}
+
+// basic handler that responds with a static string
+async fn root() -> &'static str {
+    "Hello, World!"
+}
+
+async fn parse_request(Json(payload): Json<ParseRequest>) -> Result<String, StatusCode> {
+    let program = payload.program;
+    let args = payload.args;
+
+    // Perform parsing logic here
+    let parser_config = ParserConfig::from_toml_file(format!("configs/{}.toml", program).as_str())
+        .expect("Failed to load config");
+
+    let parsed_cmdline = parse_the_split(args, &parser_config);
+
+    Ok(format!("{:?}", parsed_cmdline))
+}
+
+// the input to our `create_user` handler
+#[derive(Deserialize)]
+struct ParseRequest {
+    program: String,
+    args: Vec<String>,
+}
+
+fn old_main() {
     let cmd_line = "-xvf remotehost:test.tar.gz --rsh-command=/bin/ssh";
 
     let parser_config =
