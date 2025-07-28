@@ -26,6 +26,7 @@ struct ConfigFile {
     string_separators: Vec<String>,
     string_options: Vec<StringOption>,
     char_options: Vec<CharOption>,
+    behaviours: Vec<String>,
 }
 
 #[derive(Deserialize)]

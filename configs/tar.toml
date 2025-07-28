@@ -2,6 +2,7 @@ name = "tar"
 has_separatorless_args_for_char_options = false
 string_separators = ["=", " "]
 handle_quotes = false
+behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[char_options]]
 option_name = "v"

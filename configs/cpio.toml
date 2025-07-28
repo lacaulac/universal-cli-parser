@@ -2,6 +2,7 @@ name = "cpio"
 has_separatorless_args_for_char_options = false
 string_separators = [" "]
 handle_quotes = false
+behaviours = ["NEUTRAL"]
 
 [[char_options]]
 option_name = "o"

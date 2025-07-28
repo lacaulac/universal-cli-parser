@@ -2,6 +2,7 @@ name = "curl"
 has_separatorless_args_for_char_options = false
 string_separators = ["=", " "]
 handle_quotes = false
+behaviours = ["NET_COMS"]
 
 [[string_options]]
 option_name = "abstract-unix-socket"

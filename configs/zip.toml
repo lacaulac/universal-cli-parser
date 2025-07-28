@@ -2,6 +2,7 @@ name = "zip"
 has_separatorless_args_for_char_options = false
 string_separators = ["=", " "]
 handle_quotes = false
+behaviours = ["FILE_READ", "FILE_WRITE"]
 
 [[string_options]]
 option_name = "zip"
@@ -463,7 +464,7 @@ behaviours = ["NEUTRAL"]
 [[string_options]]
 option_name = "show-unicode"
 behaviours = ["NEUTRAL"]
-toml
+
 [[char_options]]
 option_name = "s"
 has_arg = true
@@ -657,6 +658,7 @@ behaviours = ["NEUTRAL"]
 [[string_options]]
 option_name = "names-stdin"
 behaviours = ["NEUTRAL"]
+
 [[char_options]]
 option_name = "$"
 behaviours = ["SYS_INFO"]
@@ -664,4 +666,3 @@ behaviours = ["SYS_INFO"]
 [[string_options]]
 option_name = "volume-label"
 behaviours = ["SYS_INFO"]
-
