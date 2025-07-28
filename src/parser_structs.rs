@@ -62,6 +62,15 @@ impl CLArgument {
                 .unwrap()
         });
 
+        static IPV4_REGEX: Lazy<Regex> = Lazy::new(|| {
+            Regex::new(r"^((25[0-5]|(2[0-4]|1\d|[1-9]|)\d)\.?\b){4}(:[0-9]{,5})?$").unwrap() // From https://stackoverflow.com/a/36760050
+        });
+
+        static IPV6_REGEX: Lazy<Regex> = Lazy::new(|| {
+            Regex::new(r"^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))(:[0-9]{,5})?$")
+                .unwrap() //From https://stackoverflow.com/a/17871737
+        });
+
         match self {
             CLArgument::String(str_val) => {
                 //Check if the string is a valid IP address
@@ -81,6 +90,8 @@ impl CLArgument {
                     //    *self = CLArgument::LocalPath(str_val.clone());
                 } else if URL_REGEX.is_match(str_val) {
                     *self = CLArgument::URL(str_val.clone());
+                } else if IPV4_REGEX.is_match(str_val) || IPV6_REGEX.is_match(str_val) {
+                    *self = CLArgument::IPAddress(str_val.clone());
                 } else {
                     *self = CLArgument::String(str_val.clone());
                 }
