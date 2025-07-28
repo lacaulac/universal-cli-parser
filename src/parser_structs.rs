@@ -41,6 +41,7 @@ pub enum CLArgument {
     IPAddress(String),
     RemotePath(String),
     LocalPath(String),
+    URL(String),
 }
 
 impl CLArgument {
@@ -55,6 +56,12 @@ impl CLArgument {
             Regex::new(r"((\.|\.\.)?\/)?([a-zA-Z]+[a-zA-Z0-9]*)(\/([a-zA-Z]+[a-zA-Z0-9]*))*")
                 .unwrap()
         });
+
+        static URL_REGEX: Lazy<Regex> = Lazy::new(|| {
+            Regex::new(r"https?:\/\/([a-z][a-z0-9-]*\.)?([a-z][a-z0-9-]*\.)([a-z][a-z0-9-]*)(\/([a-zA-Z0-9-.]*))*")
+                .unwrap()
+        });
+
         match self {
             CLArgument::String(str_val) => {
                 //Check if the string is a valid IP address
@@ -72,6 +79,8 @@ impl CLArgument {
                     *self = CLArgument::RemotePath(str_val.clone());
                     //} else if LOCAL_PATH_REGEX.is_match(str_val) {
                     //    *self = CLArgument::LocalPath(str_val.clone());
+                } else if URL_REGEX.is_match(str_val) {
+                    *self = CLArgument::URL(str_val.clone());
                 } else {
                     *self = CLArgument::String(str_val.clone());
                 }
