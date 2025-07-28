@@ -17,7 +17,7 @@ This project is licensed under GNU General Public License v3.0.
 - `cd universal-cli-parser`
 - `cargo run`
 
-## Example
+## Examples
 
 *Note: UCP is not mature yet and is missing important features, such as program-specific inherent behaviour handling.*
 
@@ -32,6 +32,12 @@ POST http://localhost:6880/behaviours
 
 ```json
 [
+    {
+        "CLInherentBehaviour": "FILE_READ"
+    },
+    {
+        "CLInherentBehaviour": "FILE_WRITE"
+    },
     {
         "CLBehaviouredOption": [
             "x",
@@ -57,6 +63,48 @@ POST http://localhost:6880/behaviours
     {
         "CLBehaviouredOption": [
             "v",
+            [
+                "NEUTRAL"
+            ],
+            null
+        ]
+    }
+]
+```
+
+```python
+POST http://localhost:6880/behaviours
+
+{
+    "program": "curl",
+    "args": ["-o", "test.html", "https://example.com/test.zip", "-k"]
+}
+```
+
+```json
+[
+    {
+        "CLInherentBehaviour": "NET_COMS"
+    },
+    {
+        "CLBehaviouredOption": [
+            "o",
+            [
+                "FILE_WRITE"
+            ],
+            {
+                "String": "test.html"
+            }
+        ]
+    },
+    {
+        "CLArgument": {
+            "URL": "https://example.com/test.zip"
+        }
+    },
+    {
+        "CLBehaviouredOption": [
+            "k",
             [
                 "NEUTRAL"
             ],

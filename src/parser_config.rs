@@ -19,14 +19,14 @@ use serde::Deserialize;
 use std::fs;
 
 #[derive(Deserialize)]
-struct ConfigFile {
+pub struct ConfigFile {
     name: String,
     has_separatorless_args_for_char_options: bool,
     handle_quotes: bool,
     string_separators: Vec<String>,
     string_options: Vec<StringOption>,
     char_options: Vec<CharOption>,
-    behaviours: Vec<String>,
+    pub(crate) behaviours: Vec<String>,
 }
 
 #[derive(Deserialize)]

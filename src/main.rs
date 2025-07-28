@@ -79,6 +79,13 @@ async fn behaviours_request(
     let parsed_cmdline = parse_the_split(args, &parser_config);
     let mut enriched_parsed_cmdline: Vec<CLElement> = Vec::new();
 
+    //Add the inherent behaviours of the program
+
+    for behaviour in &parser_config.config_file.behaviours {
+        let new_element = CLElement::CLInherentBehaviour(behaviour.clone());
+        enriched_parsed_cmdline.push(new_element);
+    }
+
     for elem in &parsed_cmdline {
         let new_element: CLElement;
         //If elem is not a CLOption, just copy it into the new vector
