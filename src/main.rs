@@ -73,8 +73,16 @@ async fn behaviours_request(
     let args = payload.args;
 
     // Perform parsing logic here
-    let parser_config = ParserConfig::from_toml_file(format!("configs/{}.toml", program).as_str())
-        .expect(format!("Failed to load config for program {}", program).as_str());
+    let parser_config = ParserConfig::from_toml_file(format!("configs/{}.toml", program).as_str());
+
+    let parser_config = match parser_config {
+        Ok(config) => config,
+        Err(err) => {
+            let err_msg = format!("Failed to load config for program {}: {}", program, err);
+            eprintln!("{}", err_msg);
+            return Err(StatusCode::NOT_FOUND);
+        }
+    };
 
     let parsed_cmdline = parse_the_split(args, &parser_config);
     let mut enriched_parsed_cmdline: Vec<CLElement> = Vec::new();
