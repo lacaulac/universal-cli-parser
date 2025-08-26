@@ -25,10 +25,10 @@ use serde::Serialize;
 pub enum CLElement {
     CLOption((String, Option<CLArgument>)), //Denotes command-line option with an optional argument
     CLBehaviouredOption((String, Vec<String>, Option<CLArgument>)), //Denotes command-line option with a list of behaviours and an optional argument
-    CLInherentBehaviour(String), //Denotes an inherent behaviour of the program
-    CLArgument(CLArgument),      //Denotes a free-standing argument, such as a URI for curl
-    CLSep(char),                 //Denotes a separator
-    ParsingError(Option<String>), //Used to express errors in the parsing process,
+    CLInherentBehaviour(Vec<String>), //Denotes an inherent behaviour of the program
+    CLArgument(CLArgument),           //Denotes a free-standing argument, such as a URI for curl
+    CLSep(char),                      //Denotes a separator
+    ParsingError(Option<String>),     //Used to express errors in the parsing process,
     CLDoubleDash, //Used to designate free-standing a double-dash sequence, usually used to indicate that input should be read from stdin
 }
 

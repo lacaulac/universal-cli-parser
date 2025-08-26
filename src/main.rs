@@ -17,7 +17,9 @@
 
 mod parser_config;
 mod parser_structs;
+mod config_cache;
 use std::ops::Deref;
+use config_cache::ParserConfigCache;
 
 use parser_config::ParserConfig;
 use parser_structs::CLElement;
@@ -28,24 +30,39 @@ use axum::{
     Json, Router,
     http::StatusCode,
     routing::{get, post},
+    extract::State,
 };
 use serde::{Deserialize, Serialize};
+
+const APP_NAME: &str = "universal-cli-parser";
+const APP_VERSION: &str = env!("CARGO_PKG_VERSION");
+const PORT_NUMBER: u16 = 6880;
+
+// ... cache moved to `src/config_cache.rs`
 
 #[tokio::main]
 async fn main() {
     // initialize tracing
-    //tracing_subscriber::fmt::init();
+    tracing_subscriber::fmt::init();
+
+    println!("{APP_NAME} version: {APP_VERSION}");
+
+    // Create the parser config cache
+    let config_cache = ParserConfigCache::new();
 
     // build our application with a route
     let app = Router::new()
         // `GET /` goes to `root`
         .route("/", get(root))
         .route("/parse", post(parse_request))
-        .route("/behaviours", post(behaviours_request));
+        .route("/behaviours", post(behaviours_request))
+        .with_state(config_cache);
 
     // run our app with hyper, listening globally on port 6880
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:6880").await.unwrap();
+    let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{PORT_NUMBER}")).await.unwrap();
+    println!("Starting server on port {PORT_NUMBER}");
     axum::serve(listener, app).await.unwrap();
+    println!("Bye !");
 }
 
 // basic handler that responds with a static string
@@ -67,30 +84,42 @@ async fn parse_request(Json(payload): Json<ParseRequest>) -> Result<String, Stat
 }
 
 async fn behaviours_request(
+    State(cache): State<ParserConfigCache>,
     Json(payload): Json<ParseRequest>,
 ) -> Result<Json<Vec<CLElement>>, StatusCode> {
+    let start_time = std::time::Instant::now();
     let program = payload.program;
     let args = payload.args;
 
-    // Perform parsing logic here
-    let parser_config = ParserConfig::from_toml_file(format!("configs/{}.toml", program).as_str());
-
-    let parser_config = match parser_config {
-        Ok(config) => config,
-        Err(err) => {
-            let err_msg = format!("Failed to load config for program {}: {}", program, err);
-            eprintln!("{}", err_msg);
+    // Get parser config from cache or load from filesystem (Arc<ParserConfig>)
+    let parser_config_arc = match cache.get_config(&program) {
+        Ok(arc) => arc,
+        Err(_err) => {
+            let elapsed = start_time.elapsed();
+            tracing::warn!(
+                duration_us = elapsed.as_micros(),
+                program = %program,
+                "/behaviours : Failed to load config for program"
+            );
             return Err(StatusCode::NOT_FOUND);
         }
     };
 
-    let parsed_cmdline = parse_the_split(args, &parser_config);
+    // Use a reference to the ParserConfig inside the Arc
+    let parser_config_ref: &ParserConfig = parser_config_arc.as_ref();
+    let parsed_cmdline = parse_the_split(args, parser_config_ref);
     let mut enriched_parsed_cmdline: Vec<CLElement> = Vec::new();
 
     //Add the inherent behaviours of the program
+    let mut inherent_behaviours: Vec<String> = vec![];
 
-    for behaviour in &parser_config.config_file.behaviours {
-        let new_element = CLElement::CLInherentBehaviour(behaviour.clone());
+    if parser_config_ref.config_file.behaviours.len() > 0 {
+        for behaviour in &parser_config_ref.config_file.behaviours {
+            inherent_behaviours.push(behaviour.clone());
+        }
+
+        let new_element = CLElement::CLInherentBehaviour(inherent_behaviours);
+
         enriched_parsed_cmdline.push(new_element);
     }
 
@@ -99,11 +128,17 @@ async fn behaviours_request(
         //If elem is not a CLOption, just copy it into the new vector
         if let CLElement::CLOption(opt) = elem {
             //Let's get the behaviour of the option
-            let behaviours = match parser_config.get_behaviours(&opt.0) {
+            let behaviours = match parser_config_ref.get_behaviours(&opt.0) {
                 Ok(behaviours) => behaviours,
                 Err(err) => {
-                    let err_msg = format!("Error getting behaviour for option {}: {}", opt.0, err);
-                    eprintln!("{}", err_msg);
+                    let elapsed = start_time.elapsed();
+                    tracing::error!(
+                        duration_us = elapsed.as_micros(),
+                        program = %program,
+                        option = %opt.0,
+                        error = %err,
+                        "/behaviours : Error getting behaviour for option"
+                    );
                     return Err(StatusCode::IM_A_TEAPOT);
                 }
             };
@@ -115,7 +150,13 @@ async fn behaviours_request(
         enriched_parsed_cmdline.push(new_element);
     }
 
-    println!("Dealt with a behaviour parsing request");
+    let elapsed = start_time.elapsed();
+    tracing::info!(
+        duration_us = elapsed.as_micros(),
+        program = %program,
+        "/behaviours : SUCCESS"
+    );
+    // println!("Dealt with a behaviour parsing request");
 
     Ok(Json(enriched_parsed_cmdline))
 }

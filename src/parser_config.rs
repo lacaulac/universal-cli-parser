@@ -18,7 +18,7 @@
 use serde::Deserialize;
 use std::fs;
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 pub struct ConfigFile {
     name: String,
     has_separatorless_args_for_char_options: bool,
@@ -29,20 +29,21 @@ pub struct ConfigFile {
     pub(crate) behaviours: Vec<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 struct StringOption {
     option_name: String,
     has_arg: Option<bool>,
     behaviours: Vec<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Deserialize, Clone)]
 struct CharOption {
     option_name: char,
     has_arg: Option<bool>,
     behaviours: Vec<String>,
 }
 
+#[derive(Clone)]
 pub struct ParserConfig {
     pub name: String,
     pub string_separators: Vec<char>,
