@@ -113,3 +113,8 @@ POST http://localhost:6880/behaviours
     }
 ]
 ```
+
+## Limitations
+Weird syntaxes such as GNU `tar`'s `--checkpoint-action` (*e.g.*, `--checkpoint-action=exec=/bin/sh`) option are not handled well, as they should typically be split multiple times. In the format of the exemple above, there is a specific feature that tries to split on possible separators (as specified in the program's config file, a space character or an equal character in the case of tar), thus allowing the matching of `--checkpoint-action=exec` as one single option. However, this is only good enough for a crude proof-of-concept, as attackers could make the option unrecognised (*e.g.,* trying to parse `["--checkpoint-action", "exec=/bin/sh"]` would return an error).
+
+The only way to fix this issue would be to have some sort of program-specific script, which is part of our plans for UCP.

@@ -307,3 +307,8 @@ behaviours = ["CMD_EXEC"]
 option_name = "rsh-command"
 has_arg = true
 behaviours = ["CMD_EXEC"]
+
+[[string_options]]
+option_name = "checkpoint-action=exec"
+has_arg = true
+behaviours = ["CMD_EXEC"]

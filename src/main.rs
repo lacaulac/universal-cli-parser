@@ -105,6 +105,8 @@ async fn behaviours_request(
         }
     };
 
+    //Debug display of the request contents
+    tracing::debug!(program = %program, args = ?args, "/behaviours : Received request");
     // Use a reference to the ParserConfig inside the Arc
     let parser_config_ref: &ParserConfig = parser_config_arc.as_ref();
     let parsed_cmdline = parse_the_split(args, parser_config_ref);
@@ -302,9 +304,48 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
                         }
                     }
                     Err(err_msg) => {
-                        parsed_cmdline.push(CLElement::ParsingError(Some(err_msg)));
-                        parsed_cmdline.push(CLElement::CLOption((option_name, None)));
-                        idx += 1;
+                        tracing::debug!(option_name = %option_name, "String option not recognized, trying embedded separator split");
+                        
+                        // Try to split by embedded separators before giving up
+                        if let Some((split_option, split_arg)) = parser_config.try_split_embedded_option(&option_name) {
+                            tracing::debug!(
+                                original_option = %option_name,
+                                split_option = %split_option,
+                                split_arg = %split_arg,
+                                "Successfully split embedded option"
+                            );
+                            
+                            // Found a valid split! Check if this split option expects an argument
+                            match parser_config.does_string_option_have_arg(&split_option) {
+                                Ok(true) => {
+                                    // The split option expects an argument, use the split result
+                                    let mut argument = CLArgument::String(split_arg);
+                                    argument.identify_type();
+                                    parsed_cmdline.push(CLElement::CLOption((split_option, Some(argument))));
+                                    idx += 1;
+                                }
+                                Ok(false) => {
+                                    // The split option doesn't expect an argument, but we found one embedded
+                                    // This is likely a parsing error, but let's be permissive and use the split anyway
+                                    let mut argument = CLArgument::String(split_arg);
+                                    argument.identify_type();
+                                    parsed_cmdline.push(CLElement::CLOption((split_option, Some(argument))));
+                                    idx += 1;
+                                }
+                                Err(_) => {
+                                    // This shouldn't happen since try_split_embedded_option already checked it
+                                    parsed_cmdline.push(CLElement::ParsingError(Some(err_msg)));
+                                    parsed_cmdline.push(CLElement::CLOption((option_name, None)));
+                                    idx += 1;
+                                }
+                            }
+                        } else {
+                            // No valid split found, proceed with original error
+                            tracing::debug!(option_name = %option_name, "No valid embedded split found, treating as unknown option");
+                            parsed_cmdline.push(CLElement::ParsingError(Some(err_msg)));
+                            parsed_cmdline.push(CLElement::CLOption((option_name, None)));
+                            idx += 1;
+                        }
                     }
                 }
             }
