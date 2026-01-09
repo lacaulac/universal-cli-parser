@@ -56,7 +56,7 @@ POST http://localhost:6880/behaviours
                 "FILE_WRITE"
             ],
             {
-                "String": "archive.tar"
+                "LocalPath": "archive.tar"
             }
         ]
     },
