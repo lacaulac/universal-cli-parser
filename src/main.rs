@@ -15,11 +15,11 @@
    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+mod config_cache;
 mod parser_config;
 mod parser_structs;
-mod config_cache;
-use std::ops::Deref;
 use config_cache::ParserConfigCache;
+use std::ops::Deref;
 
 use parser_config::ParserConfig;
 use parser_structs::CLElement;
@@ -28,9 +28,9 @@ use crate::parser_structs::CLArgument;
 
 use axum::{
     Json, Router,
+    extract::State,
     http::StatusCode,
     routing::{get, post},
-    extract::State,
 };
 use serde::{Deserialize, Serialize};
 
@@ -59,7 +59,9 @@ async fn main() {
         .with_state(config_cache);
 
     // run our app with hyper, listening globally on port 6880
-    let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{PORT_NUMBER}")).await.unwrap();
+    let listener = tokio::net::TcpListener::bind(format!("0.0.0.0:{PORT_NUMBER}"))
+        .await
+        .unwrap();
     println!("Starting server on port {PORT_NUMBER}");
     axum::serve(listener, app).await.unwrap();
     println!("Bye !");
@@ -305,23 +307,26 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
                     }
                     Err(err_msg) => {
                         tracing::debug!(option_name = %option_name, "String option not recognized, trying embedded separator split");
-                        
+
                         // Try to split by embedded separators before giving up
-                        if let Some((split_option, split_arg)) = parser_config.try_split_embedded_option(&option_name) {
+                        if let Some((split_option, split_arg)) =
+                            parser_config.try_split_embedded_option(&option_name)
+                        {
                             tracing::debug!(
                                 original_option = %option_name,
                                 split_option = %split_option,
                                 split_arg = %split_arg,
                                 "Successfully split embedded option"
                             );
-                            
+
                             // Found a valid split! Check if this split option expects an argument
                             match parser_config.does_string_option_have_arg(&split_option) {
                                 Ok(true) => {
                                     // The split option expects an argument, use the split result
                                     let mut argument = CLArgument::String(split_arg);
                                     argument.identify_type();
-                                    parsed_cmdline.push(CLElement::CLOption((split_option, Some(argument))));
+                                    parsed_cmdline
+                                        .push(CLElement::CLOption((split_option, Some(argument))));
                                     idx += 1;
                                 }
                                 Ok(false) => {
@@ -329,7 +334,8 @@ pub fn parse_the_split(split_vec: Vec<String>, parser_config: &ParserConfig) -> 
                                     // This is likely a parsing error, but let's be permissive and use the split anyway
                                     let mut argument = CLArgument::String(split_arg);
                                     argument.identify_type();
-                                    parsed_cmdline.push(CLElement::CLOption((split_option, Some(argument))));
+                                    parsed_cmdline
+                                        .push(CLElement::CLOption((split_option, Some(argument))));
                                     idx += 1;
                                 }
                                 Err(_) => {

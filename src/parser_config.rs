@@ -152,10 +152,10 @@ impl ParserConfig {
     /// Will try all possible splits and return the longest matching option name
     pub fn try_split_embedded_option(&self, option_str: &str) -> Option<(String, String)> {
         tracing::debug!(option_str = %option_str, separators = ?self.string_separators, "Attempting to split embedded option");
-        
+
         let mut best_match: Option<(String, String)> = None;
         let mut longest_option_len = 0;
-        
+
         for separator in &self.string_separators {
             // Find all positions where this separator appears
             let mut start_pos = 0;
@@ -163,24 +163,27 @@ impl ParserConfig {
                 let actual_split_pos = start_pos + split_pos;
                 let (option_part, remaining) = option_str.split_at(actual_split_pos);
                 let arg_part = &remaining[1..]; // Remove the separator character
-                
+
                 tracing::debug!(
-                    option_part = %option_part, 
-                    arg_part = %arg_part, 
+                    option_part = %option_part,
+                    arg_part = %arg_part,
                     separator = %separator,
                     "Found split candidate"
                 );
-                
+
                 // Check if the option part (before separator) is a known string option
-                if self.does_string_option_have_arg(&option_part.to_string()).is_ok() {
+                if self
+                    .does_string_option_have_arg(&option_part.to_string())
+                    .is_ok()
+                {
                     tracing::debug!(option_part = %option_part, "Split option is known");
-                    
+
                     // Keep track of the longest matching option
                     if option_part.len() > longest_option_len {
                         longest_option_len = option_part.len();
                         best_match = Some((option_part.to_string(), arg_part.to_string()));
                         tracing::debug!(
-                            option_part = %option_part, 
+                            option_part = %option_part,
                             arg_part = %arg_part,
                             "New best match found (longer option name)"
                         );
@@ -188,18 +191,18 @@ impl ParserConfig {
                 } else {
                     tracing::debug!(option_part = %option_part, "Split option is not known");
                 }
-                
+
                 // Move to the next potential split position
                 start_pos = actual_split_pos + 1;
             }
         }
-        
+
         if let Some((option, arg)) = &best_match {
             tracing::debug!(option = %option, arg = %arg, "Best embedded split found");
         } else {
             tracing::debug!(option_str = %option_str, "No valid embedded split found");
         }
-        
+
         best_match
     }
 
