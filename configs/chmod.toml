@@ -1,0 +1,75 @@
+name = "chmod"
+has_separatorless_args_for_char_options = false
+string_separators = [ " ", "=",]
+handle_quotes = false
+behaviours = [ "FS_OP",]
+[[char_options]]
+option_name = "c"
+has_arg = false
+behaviours = [ "FS_INFO",]
+
+[[char_options]]
+option_name = "f"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "v"
+has_arg = false
+behaviours = [ "FS_INFO",]
+
+[[char_options]]
+option_name = "R"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "changes"
+has_arg = false
+behaviours = [ "FS_INFO",]
+
+[[string_options]]
+option_name = "silent"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "quiet"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "verbose"
+has_arg = false
+behaviours = [ "FS_INFO",]
+
+[[string_options]]
+option_name = "no-preserve-root"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "preserve-root"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "reference"
+has_arg = true
+behaviours = [ "FS_INFO",]
+
+[[string_options]]
+option_name = "recursive"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "help"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "version"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
