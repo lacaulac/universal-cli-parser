@@ -1,0 +1,135 @@
+name = "python3"
+has_separatorless_args_for_char_options = true
+string_separators = [ " ", "=",]
+handle_quotes = false
+behaviours = [ "CMD_EXEC",]
+[[char_options]]
+option_name = "B"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "b"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "c"
+has_arg = true
+behaviours = [ "CMD_EXEC",]
+
+[[char_options]]
+option_name = "d"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "E"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "h"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "?"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "i"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "I"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "m"
+has_arg = true
+behaviours = [ "CMD_EXEC",]
+
+[[char_options]]
+option_name = "O"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "P"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "q"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "s"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "S"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "u"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "v"
+has_arg = false
+behaviours = [ "FS_INFO",]
+
+[[char_options]]
+option_name = "V"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "W"
+has_arg = true
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "X"
+has_arg = true
+behaviours = [ "NEUTRAL",]
+
+[[char_options]]
+option_name = "x"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "check-hash-based-pycs"
+has_arg = true
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "help"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "help-env"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "help-xoptions"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
+[[string_options]]
+option_name = "help-all"
+has_arg = false
+behaviours = [ "NEUTRAL",]
+
